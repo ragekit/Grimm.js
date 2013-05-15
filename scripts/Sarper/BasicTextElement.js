@@ -6,10 +6,18 @@ define(["lib/tween"],function(tween){
 	{
 		this.container = document.createElement('div');
 		this.lines = [];
-
-
-		this.addLine(text);
-		this.showTween = new TWEEN.Tween(this.container.style).to({opacity:1}, 500);	
+		if(text instanceof Array)
+		{
+			console.log("array");
+			this.lines = text;
+			this.formatText();
+		}
+		else
+		{
+			this.addLine(text);
+		}
+			
+		this.showTween = new TWEEN.Tween(this.container.style).to({opacity:1}, 500).delay(delay || 0);	
 	}
 
 
@@ -18,12 +26,10 @@ define(["lib/tween"],function(tween){
 			this.lines.push(line);
 			this.formatText();
 		},
-		showIn : function(parent)
+		show : function()
 		{
 			this.container.style.opacity = 0;
-			parent.appendChild(this.container);
 			this.showTween.start();
-
 		},
 		formatText : function()
 		{
