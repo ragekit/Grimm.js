@@ -1,4 +1,15 @@
-require(["lib/tween","lib/underscore","Sarper/BasicTextElement","Sarper/TweenPool"],function(tween,_,BasicTextElement,TweenPool){
+require(
+	["lib/tween",
+	"lib/underscore",
+	"Sarper/BasicTextElement",
+	"Sarper/InlineTextElement",
+	"Sarper/TweenPool"],function(
+		tween,
+		_,
+		BasicTextElement,
+		InlineTextElement,
+		TweenPool){
+
 	(function(){
 
 		var story = document.getElementById("story");
@@ -6,11 +17,12 @@ require(["lib/tween","lib/underscore","Sarper/BasicTextElement","Sarper/TweenPoo
 
 		var pool = new TweenPool(story);
 
-		var intro = new BasicTextElement(["Welcome on the FairyTale 2.0","==========="]);
-		var intro2 = new BasicTextElement("Where cool stuffs happens",500,0);
+		var intro = new InlineTextElement(["Welcome on the FairyTale 2.0","================"]);
+		var bullets = BasicTextElement.generateFromArray(["where","cool","stuff","happens"]);
+
 
 		pool.add(intro);
-		pool.add(intro2);
+		pool.add(bullets);
 
 		var update = function() {
 			TWEEN.update();

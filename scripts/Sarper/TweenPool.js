@@ -9,9 +9,16 @@ define(["lib/tween"],function(tween){
 	}
 
 	TweenPool.prototype ={
-		add:function(el,option){
+		add:function(el){
 
-			option = option || {};
+			if(el instanceof Array)
+			{
+				for(var i =0; i<el.length;i++)
+				{
+					this.add(el[i]);
+				}
+				return
+			}
 
 			this.pool.push(el);
 

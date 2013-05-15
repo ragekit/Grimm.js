@@ -4,42 +4,43 @@ define(["lib/tween"],function(tween){
 
 	function BasicTextElement(text,delay,time)
 	{
-		this.container = document.createElement('div');
-		this.lines = [];
-		if(text instanceof Array)
+		this.container = document.createElement('span');
+		this.texts = [];
+		this.addText(text);
+		this.showTween = new TWEEN.Tween(this.container.style).to({opacity:1}, time == undefined?500:time).delay(delay || 0);
+	
+	}
+
+	BasicTextElement.generateFromArray = function(arr)
+	{
+		var out =[];
+		for(var i =0;i<arr.length;i++)
 		{
-			console.log("array");
-			this.lines = text;
-			this.formatText();
+			var el = new BasicTextElement(arr[i]);
+			out.push(el);
 		}
-		else
-		{
-			this.addLine(text);
-		}
-			
-		this.showTween = new TWEEN.Tween(this.container.style).to({opacity:1}, time == undefined?500:time).delay(delay || 0);	
+		return out;
 	}
 
 
-	BasicTextElement.prototype = {
-		addLine: function(line){
-			this.lines.push(line);
+	BasicTextElement.prototype.addText = function(txt){
+			this.texts.push(txt);
 			this.formatText();
-		},
-		show : function()
+		}
+	BasicTextElement.prototype.show = function()
 		{
 			this.container.style.opacity = 0;
 			this.showTween.start();
-		},
-		formatText : function()
+		}
+	BasicTextElement.prototype.formatText = function()
 		{
 			this.container.innerHTML = "";
-			for(var i =0;i<this.lines.length;i++)
+			for(var i =0;i<this.texts.length;i++)
 			{
-				this.container.innerHTML += this.lines[i] + "<br>";
+				this.container.innerHTML += this.texts[i] + " ";
 			}
 		}
-	}
+	
 
 	return BasicTextElement;
 })
