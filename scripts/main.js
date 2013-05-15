@@ -1,8 +1,7 @@
-require(["underscore"],function(_){
+require(["underscore","Sarper/BasicTextElement"],function(_,BasicTextElement){
   (function(){
 
     var story = document.getElementById("story");
-    
     var prompt = document.getElementById("input");    
     
 
@@ -17,10 +16,10 @@ require(["underscore"],function(_){
     prompt.addEventListener("keydown",function(e){
       if(e.keyCode == 13)
       {
-        var div = document.createElement("div");
-        div.textContent = prompt.value;
+        var el = new BasicTextElement(prompt.value);
+        console.log(el.text);
         prompt.value = "";
-        story.appendChild(div);
+        story.appendChild(el.container);
       }
     });
 
