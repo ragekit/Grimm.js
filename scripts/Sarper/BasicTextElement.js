@@ -2,7 +2,7 @@ define(["lib/tween"],function(tween){
 
 
 
-	function BasicTextElement(text,delay)
+	function BasicTextElement(text,delay,time)
 	{
 		this.container = document.createElement('div');
 		this.lines = [];
@@ -17,7 +17,7 @@ define(["lib/tween"],function(tween){
 			this.addLine(text);
 		}
 			
-		this.showTween = new TWEEN.Tween(this.container.style).to({opacity:1}, 500).delay(delay || 0);	
+		this.showTween = new TWEEN.Tween(this.container.style).to({opacity:1}, time == undefined?500:time).delay(delay || 0);	
 	}
 
 
