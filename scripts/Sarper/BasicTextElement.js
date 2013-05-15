@@ -1,17 +1,37 @@
-define(function(){
-	var text;
-	function BasicTextElement(text)
+define(["lib/tween"],function(tween){
+
+
+
+	function BasicTextElement(text,delay)
 	{
 		this.container = document.createElement('div');
-		this.text = text;
+		this.lines = [];
+
+
+		this.addLine(text);
+		this.showTween = new TWEEN.Tween(this.container.style).to({opacity:1}, 500);	
 	}
 
+
 	BasicTextElement.prototype = {
-		get text(){
-			return this.container.textContent;
+		addLine: function(line){
+			this.lines.push(line);
+			this.formatText();
 		},
-		set text(value){
-			this.container.textContent = value;
+		showIn : function(parent)
+		{
+			this.container.style.opacity = 0;
+			parent.appendChild(this.container);
+			this.showTween.start();
+
+		},
+		formatText : function()
+		{
+			this.container.innerHTML = "";
+			for(var i =0;i<this.lines.length;i++)
+			{
+				this.container.innerHTML += this.lines[i] + "<br>";
+			}
 		}
 	}
 

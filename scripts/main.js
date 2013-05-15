@@ -1,31 +1,45 @@
-require(["underscore","Sarper/BasicTextElement"],function(_,BasicTextElement){
-  (function(){
+require(["lib/tween","lib/underscore","Sarper/BasicTextElement"],function(tween,_,BasicTextElement){
+	(function(){
 
-    var story = document.getElementById("story");
-    var prompt = document.getElementById("input");    
-    
+		var story = document.getElementById("story");
+		var prompt = document.getElementById("input");    
 
-    var update = function() {
+		var showPool = [];
 
-    }
 
-    var windowResize = function(e){
+		var intro = new BasicTextElement("Welcome on the FairyTale 2.0");
+		intro.addLine("============");
+		intro.addLine("Where stuff will happen");
+		intro.showIn(story);
+		console.log(intro.text);
 
-    }
+		var update = function() {
+			TWEEN.update();
+			
+		}
 
-    prompt.addEventListener("keydown",function(e){
-      if(e.keyCode == 13)
-      {
-        var el = new BasicTextElement(prompt.value);
-        console.log(el.text);
-        prompt.value = "";
-        story.appendChild(el.container);
-      }
-    });
+		var windowResize = function(e){
 
-    window.addEventListener("resize",windowResize);
-    window.setInterval(update, 500); 
-    prompt.tabIndex = "-1";
-    prompt.focus();
-  })();
+		}
+
+		var promptInput = function()
+		{
+			var el = new BasicTextElement(prompt.value);
+			prompt.value = "";
+			el.showIn(story);
+
+		}
+
+		prompt.addEventListener("keydown",function(e){
+			if(e.keyCode == 13)
+			{
+				promptInput();
+			}
+		});
+
+		window.addEventListener("resize",windowResize);
+		window.setInterval(update, 10); 
+		prompt.tabIndex = "-1";
+		prompt.focus();
+	})();
 })
