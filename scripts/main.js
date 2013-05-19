@@ -1,9 +1,9 @@
 require(
 	["lib/tween",
 	"lib/underscore",
-	"Sarper/BasicTextElement",
-	"Sarper/InlineTextElement",
-	"Sarper/TweenPool"],function(
+	"sarper/BasicTextElement",
+	"sarper/InlineTextElement",
+	"sarper/TweenPool"],function(
 		tween,
 		_,
 		BasicTextElement,
@@ -19,8 +19,7 @@ require(
 
 		var intro = new InlineTextElement(["Welcome on the FairyTale 2.0","================"]);
 		var bullets = BasicTextElement.generateFromArray(["where","cool","stuff","happens"]);
-
-
+		
 		pool.add(intro);
 		pool.add(bullets);
 
