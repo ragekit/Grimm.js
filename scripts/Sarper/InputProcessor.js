@@ -15,9 +15,9 @@ define([],function(){
 
 	InputProcessor.prototype.process = function(input)
 	{
-		if(this.commands.indexOf(input)>0)
+		if(this.commands[input] != null)
 		{
-			this.commands[input].call(this);
+			return this.commands[input].call(this);
 		}
 	}
 

@@ -6,7 +6,7 @@ define(["sarper/BasicTextElement", "lib/tween"], function(BasicTextElement, twee
 
 	function InlineTextElement(text, delay, time)
 	{
-		BasicTextElement.call(this, text, delay, time);
+		//BasicTextElement.call(this,text, delay, time);
 
 		this.container = document.createElement('div');
 		this.showTween = new TWEEN.Tween(this.container.style).to(
@@ -17,12 +17,12 @@ define(["sarper/BasicTextElement", "lib/tween"], function(BasicTextElement, twee
 		if (text instanceof Array)
 		{
 			this.texts = text;
-			this.formatText();
 		}
 		else
 		{
-			this.addText(text);
+			this.texts[0] = text;
 		}
+		this.formatText();
 	}
 
 	InlineTextElement.prototype.formatText = function()

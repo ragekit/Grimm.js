@@ -20,4 +20,4 @@ define(["sarper/InlineTextElement"], function(InlineTextElement)
 	}
 
 	return Narrator;
-})
+});

@@ -4,13 +4,15 @@ require(
 	"sarper/BasicTextElement",
 	"sarper/InlineTextElement",
 	"sarper/TweenPool",
-	"sarper/InputProcessor"],function(
+	"sarper/InputProcessor",
+	"sarper/Narrator"],function(
 		tween,
 		_,
 		BasicTextElement,
 		InlineTextElement,
 		TweenPool,
-		InputProcessor){
+		InputProcessor,
+		Narrator){
 
 	(function(){
 
@@ -19,11 +21,12 @@ require(
 		var input = new InputProcessor();   
 
 		var pool = new TweenPool(story);
+		var narrator = new Narrator(this);
 
 		var intro = new InlineTextElement(["Welcome on the FairyTale 2.0","================"]);
 		
 		pool.add(intro);
-		
+
 
 		var update = function() {
 			TWEEN.update();
@@ -36,7 +39,8 @@ require(
 
 		var promptInput = function()
 		{
-			input.process(prompt.value);
+			pool.add(narrator.say(input.process(prompt.value)));
+			prompt.value ="";
 		}
 
 		prompt.addEventListener("keydown",function(e){
