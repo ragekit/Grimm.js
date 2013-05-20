@@ -18,7 +18,6 @@ define(["sarper/BasicTextElement", "lib/tween"], function(BasicTextElement, twee
 		{
 			this.texts = text;
 			this.formatText();
-			console.log(this.formatText);
 		}
 		else
 		{
@@ -28,7 +27,6 @@ define(["sarper/BasicTextElement", "lib/tween"], function(BasicTextElement, twee
 
 	InlineTextElement.prototype.formatText = function()
 	{
-		console.log('inn');
 		this.container.innerHTML = "";
 		for (var i = 0; i < this.texts.length; i++)
 		{

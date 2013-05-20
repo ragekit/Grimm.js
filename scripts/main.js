@@ -1,27 +1,29 @@
 require(
 	["lib/tween",
-	"lib/underscore",
+	"lib/lodash",
 	"sarper/BasicTextElement",
 	"sarper/InlineTextElement",
-	"sarper/TweenPool"],function(
+	"sarper/TweenPool",
+	"sarper/InputProcessor"],function(
 		tween,
 		_,
 		BasicTextElement,
 		InlineTextElement,
-		TweenPool){
+		TweenPool,
+		InputProcessor){
 
 	(function(){
 
 		var story = document.getElementById("story");
-		var prompt = document.getElementById("input");    
+		var prompt = document.getElementById("input");
+		var input = new InputProcessor();   
 
 		var pool = new TweenPool(story);
 
 		var intro = new InlineTextElement(["Welcome on the FairyTale 2.0","================"]);
-		var bullets = BasicTextElement.generateFromArray(["where","cool","stuff","happens"]);
 		
 		pool.add(intro);
-		pool.add(bullets);
+		
 
 		var update = function() {
 			TWEEN.update();
@@ -34,10 +36,7 @@ require(
 
 		var promptInput = function()
 		{
-			var el = new BasicTextElement(prompt.value);
-			prompt.value = "";
-			pool.add(el);
-
+			input.process(prompt.value);
 		}
 
 		prompt.addEventListener("keydown",function(e){
