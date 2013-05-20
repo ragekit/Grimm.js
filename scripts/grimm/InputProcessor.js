@@ -4,24 +4,16 @@ define([],function(){
 	{
 		this.prompt = inputPrompt;
 		this.commands = [];
- 		this.addCommand("look",function(){
- 			return "The Hero gazes upon the room"
- 		});
-
  		this.prompt.addEventListener("keydown",function(e){
-			this.input(e);
+			this.onInput(e);
 		}.bind(this));
  		this.prompt.tabIndex = "-1";
 		this.prompt.focus();
+		this.input = "";
 
 	}
 
-	InputProcessor.prototype.addCommand = function(name,func)
-	{
-		this.commands[name] = func;
-	}
-
-	InputProcessor.prototype.input = function(e)
+	InputProcessor.prototype.onInput = function(e)
 	{
 		if(e.keyCode == 13)
 		{
@@ -31,10 +23,10 @@ define([],function(){
 
 	InputProcessor.prototype.process = function()
 	{
-		var input = this.prompt.value;
-		if(this.commands[input] != null)
+		this.input = this.prompt.value;
+		if(this.commands[this.input] != null)
 		{
-			return this.commands[input].call(this);
+			this.commands[this.input].call();
 		}
 
 		this.erase();

@@ -8,8 +8,8 @@ define(["grimm/TweenPool",
 	function Grimm(promptId,storyOutputId)
 	{
 		this.pool = new TweenPool(document.getElementById("story"));
-		this.narrator = new Narrator(this,this.pool);
 		this.inputProcessor = new InputProcessor(document.getElementById("input"));
+		this.narrator = new Narrator(this,this.inputProcessor,this.pool);
 		this.actors = []; 		
 	}
 
