@@ -5,14 +5,18 @@ require(
 	"grimm/InlineTextElement",
 	"grimm/TweenPool",
 	"grimm/InputProcessor",
-	"grimm/Narrator"],function(
+	"grimm/Narrator",
+	"grimm/Grimm",
+	"grimm/actors/Actor"],function(
 		tween,
 		_,
 		BasicTextElement,
 		InlineTextElement,
 		TweenPool,
 		InputProcessor,
-		Narrator){
+		Narrator,
+		Grimm,
+		Actor){
 
 	(function(){
 
@@ -26,6 +30,10 @@ require(
 		var intro = new InlineTextElement(["Welcome on the FairyTale 2.0","================"]);
 		
 		pool.add(intro);
+
+		var game = new Grimm();
+		var princess = new Actor("princess");
+		game.addActor(princess);
 
 
 		var update = function() {
