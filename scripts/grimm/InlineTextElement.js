@@ -1,4 +1,4 @@
-define(["Grimm/BasicTextElement", "lib/tween"], function(BasicTextElement, tween)
+define(["grimm/BasicTextElement", "lib/tween"], function(BasicTextElement, tween)
 {
 
 	InlineTextElement.prototype = new BasicTextElement();

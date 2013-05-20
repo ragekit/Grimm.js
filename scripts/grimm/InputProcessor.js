@@ -4,7 +4,7 @@ define([],function(){
 	{
 		this.commands = [];
  		this.addCommand("look",function(){
- 			return "The Heros gaze upon the room"
+ 			return "The Heros gazes upon the room"
  		})	
 	}
 

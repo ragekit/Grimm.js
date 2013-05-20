@@ -1,11 +1,11 @@
 require(
 	["lib/tween",
 	"lib/lodash",
-	"sarper/BasicTextElement",
-	"sarper/InlineTextElement",
-	"sarper/TweenPool",
-	"sarper/InputProcessor",
-	"sarper/Narrator"],function(
+	"grimm/BasicTextElement",
+	"grimm/InlineTextElement",
+	"grimm/TweenPool",
+	"grimm/InputProcessor",
+	"grimm/Narrator"],function(
 		tween,
 		_,
 		BasicTextElement,
@@ -21,7 +21,7 @@ require(
 		var input = new InputProcessor();   
 
 		var pool = new TweenPool(story);
-		var narrator = new Narrator(this);
+		var narrator = new Narrator(this,pool);
 
 		var intro = new InlineTextElement(["Welcome on the FairyTale 2.0","================"]);
 		
@@ -39,7 +39,7 @@ require(
 
 		var promptInput = function()
 		{
-			pool.add(narrator.say(input.process(prompt.value)));
+			narrator.say(input.process(prompt.value));
 			prompt.value ="";
 		}
 
