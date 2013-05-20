@@ -1,4 +1,4 @@
-define(["grimm/InlineTextElement","grimm/InputProcessor"], function(InlineTextElement,InputProcessor)
+define(["grimm/InlineTextElement","grimm/InputProcessor","grimm/helpers/StringHelper"], function(InlineTextElement,InputProcessor,StringHelper)
 {
 
 	function Narrator(state,inputProcessor,outputPool)
@@ -6,14 +6,26 @@ define(["grimm/InlineTextElement","grimm/InputProcessor"], function(InlineTextEl
 		this.state = state;
 		this.output = outputPool;
 		this.input = inputProcessor;
-		this.addCommand("look",function(){
-			this.say("The Hero gaze upon the room");
-		});
 
-		this.addCommand("look at",function(at){
-			this.say("the Hero had never seen such a beautiful " + at.name);
-		})
+		//TOSEPARATE
+		this.commands = [
+			{
+				trigger : "look",
+				callback : function(){
+					this.say("The Hero gazes upon the room")
+				}
+			},
+			{
+				trigger : "look at",
+				callback : function(at){
+					var target = this.state.getActorByName(at);
+					this.say("The Hero approaches to examine " + target.name);
+					this.say("He can see " + target.description());
 
+				}
+			}
+		]
+		this.addCommands(this.commands);
 	}
 
 	Narrator.prototype.update = function() {
@@ -24,9 +36,18 @@ define(["grimm/InlineTextElement","grimm/InputProcessor"], function(InlineTextEl
 
 	};
 
-	Narrator.prototype.addCommand = function(name,callback)
+	Narrator.prototype.addCommands = function(commands)
 	{
-		this.input.commands[name] = callback.bind(this);
+		for(var i=0;i<commands.length;i++)
+		{
+			this.addCommand(commands[i]);
+		}
+	}
+
+	Narrator.prototype.addCommand = function(cmd)
+	{
+		cmd.callback = cmd.callback.bind(this);
+		this.input.commands.push(cmd);
 	}
 
 	Narrator.prototype.say = function(text)

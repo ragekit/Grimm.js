@@ -9,7 +9,7 @@ define([],function(){
 		}.bind(this));
  		this.prompt.tabIndex = "-1";
 		this.prompt.focus();
-		this.input = "";
+		this.input = [];
 
 	}
 
@@ -24,10 +24,21 @@ define([],function(){
 	InputProcessor.prototype.process = function()
 	{
 		this.input = this.prompt.value;
-		if(this.commands[this.input] != null)
+		var cmd;
+		for(var i =0;i<this.commands.length;i++)
 		{
-			this.commands[this.input].call();
+			if(this.input.toLowerCase().indexOf(this.commands[i].trigger) == 0)
+			{
+				if(cmd == null || this.commands[i].trigger.length > cmd.trigger.length)
+					cmd = this.commands[i];
+			}
 		}
+
+		if(cmd !=null)
+		{
+			cmd.callback(this.input[2]);
+		}
+			
 
 		this.erase();
 	}

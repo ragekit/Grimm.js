@@ -1,9 +1,11 @@
 define(["grimm/TweenPool",
 	"grimm/InputProcessor",
-	"grimm/Narrator"],function(
+	"grimm/Narrator",
+	"grimm/helpers/StringHelper"],function(
 		TweenPool,
 		InputProcessor,
-		Narrator){
+		Narrator,
+		StringHelper){
 
 	function Grimm(promptId,storyOutputId)
 	{
@@ -16,6 +18,19 @@ define(["grimm/TweenPool",
 	Grimm.prototype.addActor = function(actor)
 	{
 		this.actors.push(actor);
+	}
+
+	Grimm.prototype.getActorByName = function(name)
+	{
+		for(var i=0;i<this.actors.length;i++)
+		{
+			console.log(name);
+			if(StringHelper.areSimilar(name,this.actors[i].name))
+			{
+				return this.actors[i];
+			}
+		}
+		return null;
 	}
 
 	return Grimm;
