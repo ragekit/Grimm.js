@@ -7,7 +7,7 @@ define([],function(){
 
 	Actor.prototype.description = function()
 	{
-		return "the most gorgeous " + this.name;
+		
 	}
 
 	Actor.prototype.update = function()

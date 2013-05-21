@@ -1,9 +1,17 @@
-define(["grimm/InlineTextElement","grimm/InputProcessor","grimm/helpers/StringHelper"], function(InlineTextElement,InputProcessor,StringHelper)
+define(["grimm/InlineTextElement",
+	"grimm/InputProcessor",
+	"grimm/helpers/StringHelper",
+	"lib/lodash"
+	], function(InlineTextElement,
+		InputProcessor,
+		StringHelper,
+		_)
 {
 
 	function Narrator(state,inputProcessor,outputPool)
 	{
 		this.state = state;
+		this.actors = state.actors;
 		this.output = outputPool;
 		this.input = inputProcessor;
 
@@ -12,15 +20,20 @@ define(["grimm/InlineTextElement","grimm/InputProcessor","grimm/helpers/StringHe
 			{
 				trigger : "look",
 				callback : function(){
-					this.say("The Hero gazes upon the room")
+					this.say(["The Hero gazes upon the room",]);
+					var pop = [];
+					_(this.actors).forEach(function(val){
+						pop.push(val.look);
+					})
+					this.say(["His look his caught by",pop.join(",")])
 				}
 			},
 			{
 				trigger : "look at",
 				callback : function(at){
 					var target = this.state.getActorByName(at);
-					this.say("The Hero approaches to examine " + target.name);
-					this.say("He can see " + target.description());
+					this.say(["The Hero approaches to examine",target.name]);
+					this.say(["He can see",target.description()]);
 
 				}
 			}
@@ -52,7 +65,34 @@ define(["grimm/InlineTextElement","grimm/InputProcessor","grimm/helpers/StringHe
 
 	Narrator.prototype.say = function(text)
 	{
-		this.output.add(new InlineTextElement(text, 0, 500));
+		if(text instanceof Array)
+		{
+			console.log(rjoin(text," "));
+			this.output.add(new InlineTextElement(rjoin(text," "), 0, 500));
+		} 
+		else
+		{
+			this.output.add(new InlineTextElement(text, 0, 500));
+		}
+	}
+
+	//TODO move it in an array helper maybe ?
+	function rjoin(ar,jn)
+	{
+		var ret = "";
+		for(var i=0;i<ar.length;i++)
+		{
+			if(ar[i] instanceof Array)
+			{
+				ret += rjoin(ar[i]);
+			}
+			else
+			{
+				ret += ar[i];
+			}
+			ret += " ";
+		}
+		return ret;
 	}
 
 	return Narrator;

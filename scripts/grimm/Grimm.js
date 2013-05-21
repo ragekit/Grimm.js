@@ -9,15 +9,21 @@ define(["grimm/TweenPool",
 
 	function Grimm(promptId,storyOutputId)
 	{
+		this.actors = []; 
 		this.pool = new TweenPool(document.getElementById("story"));
 		this.inputProcessor = new InputProcessor(document.getElementById("input"));
 		this.narrator = new Narrator(this,this.inputProcessor,this.pool);
-		this.actors = []; 		
+				
 	}
 
 	Grimm.prototype.addActor = function(actor)
 	{
 		this.actors.push(actor);
+	}
+
+	Grimm.prototype.getActors = function()
+	{
+		
 	}
 
 	Grimm.prototype.getActorByName = function(name)
