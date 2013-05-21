@@ -1,7 +1,9 @@
 define([],function(){
 
+
 	function Actor(name)
 	{
+		this.memory = {};
  		this.name = name;
 	}
 

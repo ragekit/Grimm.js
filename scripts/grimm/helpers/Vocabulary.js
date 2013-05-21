@@ -2,6 +2,14 @@ define([],function(){
 
 	Vocabulary = {};
 
+	//TODO vocab complexity, but later.
+	var looks=[
+		"gazes upon the room",
+		"takes a glimpse of the room",
+		"looks at the room",
+		"get some infos about the room"
+	]
+
 	Vocabulary.pronoun = function(obj)
 	{
 		switch(obj.genre)
@@ -21,6 +29,11 @@ define([],function(){
 	Vocabulary.paraphrase = function(type)
 	{
 
+	}
+
+	Vocabulary.look = function()
+	{
+		return looks[Math.floor(Math.random()*looks.length)];
 	}
 
 	return Vocabulary;

@@ -1,0 +1,1 @@
+//object, place, or anything about the world

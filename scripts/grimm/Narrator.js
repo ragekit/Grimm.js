@@ -20,7 +20,7 @@ define(["grimm/InlineTextElement",
 			{
 				trigger : "look",
 				callback : function(){
-					this.say(["The Hero gazes upon the room",]);
+					this.say(["The Hero gazes upon the room"]);
 					var pop = [];
 					_(this.actors).forEach(function(val){
 						pop.push(val.look);
