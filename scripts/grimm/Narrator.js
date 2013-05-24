@@ -23,7 +23,7 @@ define(["grimm/InlineTextElement",
 					this.say(["The Hero gazes upon the room"]);
 					var pop = [];
 					_(this.actors).forEach(function(val){
-						pop.push(val.look);
+						pop.push(val.role);
 					})
 					this.say(["His look his caught by",pop.join(",")])
 				}
@@ -41,7 +41,8 @@ define(["grimm/InlineTextElement",
 				trigger : "talk to",
 				callback : function(to){
 					var target = this.state.getActor(to);
-					this.say([target.name,"says",target.greeting]);
+					console.log(target.name);
+					this.say([target.name,"says",target.greeting.getContent()]);
 				}
 			}
 		]

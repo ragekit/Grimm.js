@@ -1,4 +1,5 @@
-define(["grimm/actors/Actor"],function(Actor){
+define(["grimm/actors/Actor",
+	"fairyTale/storyElements/talkLines/CasualGreeting"],function(Actor,CasualGreeting){
 
 	King.prototype = new Actor();
 	King.prototype.constructor = King;

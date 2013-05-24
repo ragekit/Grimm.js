@@ -7,7 +7,7 @@ define([],function(){
  		this.cooldown = 0;
 	}
 
-	TalkLine.prototype.toString = function()
+	TalkLine.prototype.getContent = function()
 	{
 		if(this.cooldown == 0)
 		{
