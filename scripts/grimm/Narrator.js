@@ -40,7 +40,7 @@ define(["grimm/InlineTextElement",
 			{	
 				trigger : "talk to",
 				callback : function(to){
-					var target = this.state.getActorByProperty("role",to);
+					var target = this.state.getActor(to);
 					this.say([target.name,"says",target.greeting]);
 				}
 			}
