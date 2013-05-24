@@ -3,7 +3,13 @@ define([],function(){
 
 	function WorldElement()
 	{
- 		
+ 		this.name;
+ 		this.description;
+	}
+
+	WorldElement.prototype. = function()
+	{
+		
 	}
 
 	return WorldElement;

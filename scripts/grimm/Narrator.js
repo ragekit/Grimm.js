@@ -34,7 +34,14 @@ define(["grimm/InlineTextElement",
 					var target = this.state.getActorByName(at);
 					this.say(["The Hero approaches to examine",target.name]);
 					this.say(["He can see",target.description()]);
+				}
 
+			},
+			{	
+				trigger : "talk to",
+				callback : function(to){
+					var target = this.state.getActorByProperty("role",to);
+					this.say([to.name,"says",to.greeting]);
 				}
 			}
 		]

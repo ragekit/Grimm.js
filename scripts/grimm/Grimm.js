@@ -26,11 +26,29 @@ define(["grimm/TweenPool",
 		
 	}
 
+	Grimm.prototype.getActor = function(whatever)
+	{
+		
+	}
+
+	Grimm.prototype.getActorByProperty = function(prop,value)
+	{
+		for(var i=0;i<this.actors.length;i++)
+		{
+			console.log(value);
+			if(StringHelper.areSimilar(value,this.actors[i][prop]))
+			{
+				return this.actors[i];
+			}
+		}
+		return null;
+	}
+
+
 	Grimm.prototype.getActorByName = function(name)
 	{
 		for(var i=0;i<this.actors.length;i++)
 		{
-			console.log(name);
 			if(StringHelper.areSimilar(name,this.actors[i].name))
 			{
 				return this.actors[i];

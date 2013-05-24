@@ -1,4 +1,4 @@
-define(["fairyTale/storyElements/talkLines/Greeting"],function(Greeting){
+define(["./Greeting"],function(Greeting){
 
 	CasualGreeting.prototype = new Greeting();
 	CasualGreeting.prototype.constructor = CasualGreeting;

@@ -13,7 +13,7 @@ require(
 		var game = new Grimm("prompt","story");
 		var princess = new Princess("Amelia");
 		game.addActor(princess);
-
+		
 
 		var update = function() {
 			TWEEN.update();		

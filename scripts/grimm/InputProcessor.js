@@ -36,7 +36,7 @@ define([],function(){
 
 		if(cmd !=null)
 		{
-			cmd.callback(this.input[2]);
+			cmd.callback(this.input.split(" ")[2]);
 		}
 			
 
