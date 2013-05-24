@@ -1,11 +1,13 @@
 define(["grimm/InlineTextElement",
 	"grimm/InputProcessor",
 	"grimm/helpers/StringHelper",
-	"lib/lodash"
+	"lib/lodash",
+	"grimm/storyElements/TalkLine"
 	], function(InlineTextElement,
 		InputProcessor,
 		StringHelper,
-		_)
+		_,
+		TalkLine)
 {
 
 	function Narrator(state,inputProcessor,outputPool)
@@ -15,7 +17,7 @@ define(["grimm/InlineTextElement",
 		this.output = outputPool;
 		this.input = inputProcessor;
 
-		//TOSEPARATE
+		//TOSEPARATE : is implemented in each story right ? or not. dunno
 		this.commands = [
 			{
 				trigger : "look",
@@ -41,8 +43,7 @@ define(["grimm/InlineTextElement",
 				trigger : "talk to",
 				callback : function(to){
 					var target = this.state.getActor(to);
-					console.log(target.name);
-					this.say([target.name,"says",target.greeting.getContent()]);
+					this.say([target.name,"says",TalkLine.resolveCoolDown(target.greeting)]);
 				}
 			}
 		]

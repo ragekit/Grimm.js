@@ -1,25 +1,34 @@
 define([],function(){
 
-	function TalkLine()
+	TalkLine = {hash:[]};
+	
+	TalkLine.resolveCoolDown = function(obj)
 	{
- 		this.content = "";
- 		this.meta;
- 		this.cooldown = 0;
-	}
-
-	TalkLine.prototype.getContent = function()
-	{
-		if(this.cooldown == 0)
+		if(TalkLine.hash.indexOf(obj) == -1)
 		{
-			console.log(this.content);
-			this.cooldown += 5;
-			return this.content;
+			//if no parent, no cooldown and talk instantly
+			if(obj.parent != null)
+			{
+				obj.cooldown = 0;
+				TalkLine.hash.push(obj);
+			}
+			else
+			{
+				return obj.content;
+			}			
+		}
+	
+		obj = TalkLine.hash[TalkLine.hash.indexOf(obj)];
+		if(obj.cooldown == 0)
+		{	
+			//TODO not hardcode value
+			obj.cooldown +=5;
+			return obj.content;
 		}else
 		{
-			return Object.create(this.__proto__) +"";
+			return TalkLine.resolveCoolDown(obj.parent);
 		}
-		
-	}
 
+	}
 	return TalkLine;
 })

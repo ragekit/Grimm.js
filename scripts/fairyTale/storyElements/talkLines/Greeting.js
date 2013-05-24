@@ -1,18 +1,8 @@
-define(["grimm/storyElements/TalkLine"],function(TalkLine){
+define([],function(){
 
-	Greeting.prototype = new TalkLine();
-	Greeting.prototype.constructor = Greeting;
-	Greeting.prototype.parent = TalkLine.prototype;
-
-
-
-	function Greeting()
-	{
-		TalkLine.call(this);
-		this.content = "Hello";
+	Greeting = {
+		content : "Hello",
 	}
-
-	
 
 	return Greeting;
 })
