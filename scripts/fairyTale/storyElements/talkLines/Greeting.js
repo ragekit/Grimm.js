@@ -4,11 +4,12 @@ define(["grimm/storyElements/TalkLine"],function(TalkLine){
 	Greeting.prototype.constructor = Greeting;
 	Greeting.prototype.parent = TalkLine.prototype;
 
-	
+
 
 	function Greeting()
 	{
-		TalkLine.call(this,"Hello");
+		TalkLine.call(this);
+		this.content = "Hello";
 	}
 
 	

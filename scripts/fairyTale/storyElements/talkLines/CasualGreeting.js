@@ -7,7 +7,8 @@ define(["./Greeting"],function(Greeting){
 
 	function CasualGreeting()
 	{
-		Greeting.call(this,"Hi !");
+		Greeting.call(this);
+		this.content = "hey";
 	}
 
 	

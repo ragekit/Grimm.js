@@ -84,6 +84,7 @@ define(["grimm/InlineTextElement",
 	}
 
 	//TODO move it in an array helper maybe ?
+	//recursively join array
 	function rjoin(ar,jn)
 	{
 		var ret = "";
@@ -97,7 +98,7 @@ define(["grimm/InlineTextElement",
 			{
 				ret += ar[i];
 			}
-			ret += " ";
+			ret += jn;
 		}
 		return ret;
 	}

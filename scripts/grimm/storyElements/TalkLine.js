@@ -1,8 +1,8 @@
 define([],function(){
 
-	function TalkLine(line)
+	function TalkLine()
 	{
- 		this.content = line;
+ 		this.content = "";
  		this.meta;
  		this.cooldown = 0;
 	}
@@ -11,10 +11,12 @@ define([],function(){
 	{
 		if(this.cooldown == 0)
 		{
+			console.log(this.content);
+			this.cooldown += 5;
 			return this.content;
 		}else
 		{
-			return Object.create(this.parent);
+			return Object.create(this.__proto__) +"";
 		}
 		
 	}
