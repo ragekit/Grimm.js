@@ -3,7 +3,8 @@ define([],function(){
 
 	function Actor(name)
 	{
-		this.memory = {};
+		//pack of worldElements
+		this.memory = [];
  		this.name = name;
 	}
 
