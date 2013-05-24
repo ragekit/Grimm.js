@@ -41,7 +41,7 @@ define(["grimm/InlineTextElement",
 				trigger : "talk to",
 				callback : function(to){
 					var target = this.state.getActorByProperty("role",to);
-					this.say([to.name,"says",to.greeting]);
+					this.say([target.name,"says",target.greeting]);
 				}
 			}
 		]

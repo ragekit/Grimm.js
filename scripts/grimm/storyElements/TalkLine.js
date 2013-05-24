@@ -7,14 +7,14 @@ define([],function(){
  		this.cooldown = 0;
 	}
 
-	TalkLine.prototype._toString = function()
+	TalkLine.prototype.toString = function()
 	{
-		if(cooldown == 0)
+		if(this.cooldown == 0)
 		{
 			return this.content;
 		}else
 		{
-			return Object.create(this.parent).getConten();
+			return Object.create(this.parent);
 		}
 		
 	}

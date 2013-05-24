@@ -35,7 +35,6 @@ define(["grimm/TweenPool",
 	{
 		for(var i=0;i<this.actors.length;i++)
 		{
-			console.log(value);
 			if(StringHelper.areSimilar(value,this.actors[i][prop]))
 			{
 				return this.actors[i];
