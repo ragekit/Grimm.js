@@ -5,6 +5,7 @@ define([],function(){
 	{
 		//pack of worldElements
 		this.memory = [];
+		this.motivation;
  		this.name = name;
 	}
 

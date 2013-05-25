@@ -50,14 +50,6 @@ define(["grimm/InlineTextElement",
 		this.addCommands(this.commands);
 	}
 
-	Narrator.prototype.update = function() {
-		for(var i =0;i<this.state.actors.length;i++)
-		{
-			this.state.actors[i].update();
-		}
-
-	};
-
 	Narrator.prototype.addCommands = function(commands)
 	{
 		for(var i=0;i<commands.length;i++)

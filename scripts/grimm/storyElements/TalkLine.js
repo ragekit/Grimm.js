@@ -21,8 +21,7 @@ define([],function(){
 		obj = TalkLine.hash[TalkLine.hash.indexOf(obj)];
 		if(obj.cooldown == 0)
 		{	
-			//TODO not hardcode value
-			obj.cooldown +=5;
+			obj.cooldown +=obj.rarity;
 			return obj.content;
 		}else
 		{
@@ -30,5 +29,13 @@ define([],function(){
 		}
 
 	}
+
+	TalkLine.updateCooldown = function()
+	{
+		for (var i = 0; i < TalkLine.hash.length; i++) {
+			TalkLine.hash[i].cooldown--;
+		};
+	}
+
 	return TalkLine;
 })

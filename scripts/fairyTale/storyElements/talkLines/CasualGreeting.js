@@ -2,7 +2,8 @@ define(["./Greeting"],function(Greeting){
 
 	CasualGreeting = {
 		content: "hey",
-		parent : Greeting
+		parent : Greeting,
+		rarity : 5
 	}
 
 	return CasualGreeting;

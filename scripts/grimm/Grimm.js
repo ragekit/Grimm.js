@@ -1,21 +1,34 @@
 define(["grimm/TweenPool",
 		"grimm/InputProcessor",
 		"grimm/Narrator",
-		"grimm/helpers/StringHelper"
+		"grimm/helpers/StringHelper",
+		"grimm/storyElements/TalkLine"
 ], function(
 	TweenPool,
 	InputProcessor,
 	Narrator,
-	StringHelper)
+	StringHelper,
+	TalkLine)
 {
 
 	function Grimm(promptId, storyOutputId)
 	{
 		this.actors = [];
+		//objectize state ?
+		this.state;
 		this.pool = new TweenPool(document.getElementById("story"));
 		this.inputProcessor = new InputProcessor(document.getElementById("input"));
 		this.narrator = new Narrator(this, this.inputProcessor, this.pool);
 
+	}
+
+	Grimm.prototype.update = function()
+	{
+		for(var i=0;i<this.actors.length;i++)
+		{
+			this.actors[i].update();
+		}
+		TalkLine.updateCooldown();
 	}
 
 	Grimm.prototype.addActor = function(actor)
@@ -24,7 +37,7 @@ define(["grimm/TweenPool",
 	}
 
 	Grimm.prototype.getActors = function() {
-
+		return this.actors;
 	}
 
 	Grimm.prototype.getActor = function(whatever)
@@ -40,7 +53,6 @@ define(["grimm/TweenPool",
 						return this.actors[i];
 					}
 				}
-
 			}
 		}
 		return null;
