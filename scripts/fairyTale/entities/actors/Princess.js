@@ -1,6 +1,6 @@
 define(["grimm/entities/actors/Actor",
 	"grimm/helpers/Vocabulary",
-	"fairyTale/entities/lines/Greeting"
+	"fairytale/entities/lines/Greeting"
 	],function(Actor,Vocabulary){
 
 	Princess.prototype = new Actor();
