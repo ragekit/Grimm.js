@@ -1,3 +1,5 @@
+//Vocabulary class, to implement, low priority
+
 define([],function(){
 
 	Vocabulary = {};

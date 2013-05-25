@@ -18,6 +18,8 @@ require(
 		game.addActor(princess);
 		game.addActor(king);
 
+
+		//anim update 
 		var update = function() {
 			TWEEN.update();		
 		}
@@ -27,6 +29,8 @@ require(
 		}
 
 		window.addEventListener("resize",windowResize);
+
+		//TODO : replace with requestanimframe.js
 		window.setInterval(update, 10); 
 	})();
 })

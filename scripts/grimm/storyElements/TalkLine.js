@@ -1,3 +1,5 @@
+// STATIC class to handle talkline/cooldown and stuffs
+
 define([],function(){
 
 	TalkLine = {hash:[]};

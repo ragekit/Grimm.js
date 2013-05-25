@@ -14,21 +14,23 @@ define(["grimm/TweenPool",
 	function Grimm(promptId, storyOutputId)
 	{
 		this.actors = [];
-		//objectize state ?
+		//TODO : objectize state ?
 		this.state;
 		this.pool = new TweenPool(document.getElementById("story"));
-		this.inputProcessor = new InputProcessor(document.getElementById("input"));
+		this.inputProcessor = new InputProcessor(document.getElementById("input"),this.update.bind(this));
 		this.narrator = new Narrator(this, this.inputProcessor, this.pool);
 
 	}
 
 	Grimm.prototype.update = function()
 	{
+		TalkLine.updateCooldown();
 		for(var i=0;i<this.actors.length;i++)
 		{
 			this.actors[i].update();
 		}
-		TalkLine.updateCooldown();
+
+		console.log("UPDATE LOOP");
 	}
 
 	Grimm.prototype.addActor = function(actor)

@@ -1,6 +1,6 @@
 define([],function(){
 
-	function InputProcessor(inputPrompt)
+	function InputProcessor(inputPrompt,processCallback)
 	{
 		this.prompt = inputPrompt;
 		this.commands = [];
@@ -11,6 +11,7 @@ define([],function(){
 		this.prompt.focus();
 		this.input = [];
 
+		this.processCallback = processCallback;
 	}
 
 	InputProcessor.prototype.onInput = function(e)
@@ -41,6 +42,11 @@ define([],function(){
 			
 
 		this.erase();
+
+		if(this.processCallback !=null)
+		{
+			this.processCallback();
+		}
 	}
 
 

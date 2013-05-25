@@ -1,1 +1,1 @@
-// reunion of actors, objects and subjets of conversation
+//Static class to handle PlotNodes

@@ -14,6 +14,11 @@ define([],function(){
 		
 	}
 
+	Actor.prototype.remember = function(worldElement)
+	{
+		
+	}
+
 	Actor.prototype.update = function()
 	{
 		
