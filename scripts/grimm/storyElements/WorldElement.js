@@ -5,9 +5,11 @@ define([],function(){
 	{
  		this.name;
  		this.description;
+ 		this.location;
+ 		this.content;
 	}
 
-	WorldElement.prototype. = function()
+	WorldElement.prototype.update = function()
 	{
 		
 	}

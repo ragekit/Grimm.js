@@ -1,7 +1,7 @@
 define(["grimm/actors/Actor",
 	"grimm/helpers/Vocabulary",
-	"fairyTale/storyElements/talkLines/CasualGreeting"
-	],function(Actor,Vocabulary,CasualGreeting){
+	"fairyTale/storyElements/talkLines/Greeting"
+	],function(Actor,Vocabulary){
 
 	Princess.prototype = new Actor();
 	Princess.prototype.constructor = Princess;

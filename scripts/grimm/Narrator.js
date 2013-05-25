@@ -45,6 +45,12 @@ define(["grimm/InlineTextElement",
 					var target = this.state.getActor(to);
 					this.say([target.name,"says",TalkLine.resolveCoolDown(target.greeting)]);
 				}
+			},
+			{
+				trigger : "wait",
+				callback : function(){
+
+				}
 			}
 		]
 		this.addCommands(this.commands);

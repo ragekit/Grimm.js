@@ -11,7 +11,7 @@ define(["grimm/actors/Actor",
 		Actor.call(this);
  		this.role = "a king";
  		this.name = "King Mustard the 3rd";
- 		this.greeting = CasualGreeting;
+ 		this.greeting = FormalGreeting;
 	}
 
 	
