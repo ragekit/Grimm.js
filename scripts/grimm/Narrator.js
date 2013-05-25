@@ -1,13 +1,11 @@
 define(["grimm/InlineTextElement",
 	"grimm/InputProcessor",
 	"grimm/helpers/StringHelper",
-	"lib/lodash",
-	"grimm/storyElements/TalkLine"
+	"lib/lodash"
 	], function(InlineTextElement,
 		InputProcessor,
 		StringHelper,
-		_,
-		TalkLine)
+		_)
 {
 
 	function Narrator(state,inputProcessor,outputPool)
@@ -35,7 +33,7 @@ define(["grimm/InlineTextElement",
 				callback : function(at){
 					var target = this.state.getActorByName(at);
 					this.say(["The Hero approaches to examine",target.name]);
-					this.say(["He can see",target.description()]);
+					this.say(["He can see",target.getDescription()]);
 				}
 
 			},

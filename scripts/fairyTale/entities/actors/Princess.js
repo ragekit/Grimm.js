@@ -1,6 +1,6 @@
-define(["grimm/actors/Actor",
+define(["grimm/entities/actors/Actor",
 	"grimm/helpers/Vocabulary",
-	"fairyTale/storyElements/talkLines/Greeting"
+	"fairyTale/entities/lines/Greeting"
 	],function(Actor,Vocabulary){
 
 	Princess.prototype = new Actor();
@@ -9,15 +9,14 @@ define(["grimm/actors/Actor",
 
 	function Princess(name)
 	{
-		Actor.call(this,name);
- 		this.role = "a princess";
+		Actor.call(this,name,"a princess");
  		this.genre = "f";
  		this.lines['greeting'] = CasualGreeting;
 	}
 
-	Princess.prototype.description = function()
+	Princess.prototype.getDescription = function()
 	{
-		return ["this is",this.name,Vocabulary.pronoun(this),"is",this.role];	
+		return ["this is",this.name,Vocabulary.pronoun(this),"is",this.description];	
 	}
 
 	return Princess;

@@ -2,8 +2,8 @@ require(
 	["lib/tween",
 	"lib/lodash",
 	"grimm/Grimm",
-	"fairyTale/actors/Princess",
-	"fairyTale/actors/King"],function(
+	"fairyTale/entities/actors/Princess",
+	"fairyTale/entities/actors/King"],function(
 		tween,
 		_,
 		Grimm,

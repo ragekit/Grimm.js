@@ -2,13 +2,13 @@ define(["grimm/TweenPool",
 		"grimm/InputProcessor",
 		"grimm/Narrator",
 		"grimm/helpers/StringHelper",
-		"grimm/storyElements/TalkLine"
+		"grimm/plot/LinesManager"
 ], function(
 	TweenPool,
 	InputProcessor,
 	Narrator,
 	StringHelper,
-	TalkLine)
+	LinesManager)
 {
 
 	function Grimm(promptId, storyOutputId)
@@ -24,7 +24,7 @@ define(["grimm/TweenPool",
 
 	Grimm.prototype.update = function()
 	{
-		TalkLine.updateCooldown();
+		LinesManager.updateCooldown();
 		for(var i=0;i<this.actors.length;i++)
 		{
 			this.actors[i].update();
