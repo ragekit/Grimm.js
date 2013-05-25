@@ -8,8 +8,16 @@ define(
 }
 */
 
+//does all lines need to be static, or can i do singleton ? or instance in each actors ?
+
 	Greeting = {
 		content : "Hello",
+	},
+
+	//TODO metas in lines
+	DirectedGreeting = {
+		content : "Hello",
+		parent : Greeting
 	},
 
 	CasualGreeting = {

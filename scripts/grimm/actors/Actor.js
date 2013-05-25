@@ -7,6 +7,13 @@ define([],function(){
 		this.memory = [];
 		this.motivation;
  		this.name = name;
+ 		this.lines =[];
+
+	}
+
+	Actor.prototype.talkTo = function(to,line)
+	{
+		return TalkLine.resolveCoolDown(this.lines[line]);
 	}
 
 	Actor.prototype.description = function()

@@ -1,5 +1,5 @@
 define(["grimm/actors/Actor",
-	"fairyTale/storyElements/talkLines/CasualGreeting"],function(Actor,CasualGreeting){
+	"fairyTale/storyElements/talkLines/Greeting"],function(Actor){
 
 	King.prototype = new Actor();
 	King.prototype.constructor = King;
@@ -11,7 +11,7 @@ define(["grimm/actors/Actor",
 		Actor.call(this);
  		this.role = "a king";
  		this.name = "King Mustard the 3rd";
- 		this.greeting = FormalGreeting;
+ 		this.lines['greeting'] = FormalGreeting;
 	}
 
 	

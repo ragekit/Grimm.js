@@ -12,15 +12,13 @@ define(["grimm/actors/Actor",
 		Actor.call(this,name);
  		this.role = "a princess";
  		this.genre = "f";
- 		this.greeting = CasualGreeting;
+ 		this.lines['greeting'] = CasualGreeting;
 	}
 
 	Princess.prototype.description = function()
 	{
 		return ["this is",this.name,Vocabulary.pronoun(this),"is",this.role];	
 	}
-
-	
 
 	return Princess;
 })

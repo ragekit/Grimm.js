@@ -1,10 +1,11 @@
 //object, place, or anything about the world
+
 define([],function(){
 
-	function WorldElement()
+	function WorldElement(name,description)
 	{
- 		this.name;
- 		this.description;
+ 		this.name = name;
+ 		this.description = description;
  		this.location;
  		this.content;
 	}

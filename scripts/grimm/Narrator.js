@@ -43,7 +43,8 @@ define(["grimm/InlineTextElement",
 				trigger : "talk to",
 				callback : function(to){
 					var target = this.state.getActor(to);
-					this.say([target.name,"says",TalkLine.resolveCoolDown(target.greeting)]);
+					var output = target.talkTo('Hero',"greeting");
+					this.say([target.name,"says",output]);
 				}
 			},
 			{
