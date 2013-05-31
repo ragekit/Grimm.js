@@ -22,7 +22,7 @@ define([],function(){
 			case "m":
 				return "he";
 				break;
-			case "o":
+			case "n":
 				return "it";
 				break;
 		}

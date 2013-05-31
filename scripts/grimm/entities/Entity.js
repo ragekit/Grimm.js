@@ -2,10 +2,9 @@
 
 define([],function(){
 
-	function Entity(name,description)
+	function Entity(name)
 	{
  		this.name = name;
- 		this.description = description;
  		this.location;
 	}
 

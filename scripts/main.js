@@ -2,8 +2,8 @@ require(
 	["lib/tween",
 	"lib/lodash",
 	"grimm/Grimm",
-	"fairyTale/entities/actors/Princess",
-	"fairyTale/entities/actors/King"],function(
+	"fairytale/entities/actors/Princess",
+	"fairytale/entities/actors/King"],function(
 		tween,
 		_,
 		Grimm,
@@ -13,7 +13,7 @@ require(
 	(function(){
 
 		var game = new Grimm("prompt","story");
-		var princess = new Princess("Amelia");
+		var princess = new Princess();
 		var king = new King();
 		game.addActor(princess);
 		game.addActor(king);

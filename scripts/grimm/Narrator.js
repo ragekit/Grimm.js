@@ -31,7 +31,12 @@ define(["grimm/InlineTextElement",
 			{
 				trigger : "look at",
 				callback : function(at){
-					var target = this.state.getActorByName(at);
+					var target = this.state.getActor(at);
+					if(target == null)
+					{
+						this.say("The Hero can't find this person in the room");
+						return
+					}
 					this.say(["The Hero approaches to examine",target.name]);
 					this.say(["He can see",target.getDescription()]);
 				}
@@ -73,7 +78,6 @@ define(["grimm/InlineTextElement",
 	{
 		if(text instanceof Array)
 		{
-			console.log(rjoin(text," "));
 			this.output.add(new InlineTextElement(rjoin(text," "), 0, 500));
 		} 
 		else
@@ -91,7 +95,7 @@ define(["grimm/InlineTextElement",
 		{
 			if(ar[i] instanceof Array)
 			{
-				ret += rjoin(ar[i]);
+				ret += rjoin(ar[i],jn);
 			}
 			else
 			{
