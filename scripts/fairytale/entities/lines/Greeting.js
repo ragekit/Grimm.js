@@ -1,35 +1,29 @@
 define(
-//how to define a talkline pack in one file
+	function()
+	{
+		base = function(){
+			this.content = "Hello";
+		}
 
-/* NAME = {
-	content : the line,
-	parent : the fallback,
-	rarity : the bigger, the less it is used
-}
-*/
+		directed = function(to){
+			this.content = "hello " + to;
+			this.parent = base;
+		}
 
-//does all lines need to be static, or can i do singleton ? or instance in each actors ?
+		casual = function(){
+			this.content= "hey";
+			this.parent = base;
+			this.rarity = 5;
+		}
 
-	Greeting = {
-		content : "Hello",
-	},
+		formal = function(){
+			this.content= "good afternoon";
+			this.parent = base;
+			this.rarity = 5;
+		}
+		return this
 
-	//TODO metas in lines
-	DirectedGreeting = {
-		content : "Hello",
-		parent : Greeting
-	},
-
-	CasualGreeting = {
-		content: "hey",
-		parent : Greeting,
-		rarity : 5
-	},
-
-	FormalGreeting = {
-		content: "Good afternoon",
-		parent : Greeting,
-		rarity : 5
 	}
-
+		
+	
 )

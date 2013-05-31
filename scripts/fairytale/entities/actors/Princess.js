@@ -1,7 +1,7 @@
 define(["grimm/entities/actors/Actor",
 	"grimm/helpers/Vocabulary",
 	"fairytale/entities/lines/Greeting"
-	],function(Actor,Vocabulary){
+	],function(Actor,Vocabulary,Greeting){
 
 	Princess.prototype = new Actor();
 	Princess.prototype.constructor = Princess;
@@ -11,7 +11,7 @@ define(["grimm/entities/actors/Actor",
 	{
 		Actor.call(this,"Amelia","a princess");
  		this.genre = "f";
- 		this.lines['greeting'] = CasualGreeting;
+ 		this.lines['greeting'] = Greeting.directed;
 	}
 
 	return Princess;

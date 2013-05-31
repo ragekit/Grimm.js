@@ -46,6 +46,11 @@ define(["grimm/InlineTextElement",
 				trigger : "talk to",
 				callback : function(to){
 					var target = this.state.getActor(to);
+					if(target == null)
+					{
+						this.say("The Hero can't find this person in the room");
+						return
+					}
 					var output = target.talkTo('Hero',"greeting");
 					this.say([target.name,"says",output]);
 				}

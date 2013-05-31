@@ -17,7 +17,7 @@ require(
 		var king = new King();
 		game.addActor(princess);
 		game.addActor(king);
-
+		
 
 		//anim update 
 		var update = function() {
