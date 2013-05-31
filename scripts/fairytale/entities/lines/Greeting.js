@@ -5,9 +5,10 @@ define(
 			this.content = "Hello";
 		}
 
-		directed = function(to){
-			this.content = "hello " + to;
+		directed = function(meta){
+			this.content = "hello " + (meta.to || "you");
 			this.parent = base;
+			this.rarity = 2;
 		}
 
 		casual = function(){

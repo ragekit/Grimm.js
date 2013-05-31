@@ -18,7 +18,7 @@ require(
 		game.addActor(princess);
 		game.addActor(king);
 		
-
+		console.log(princess.lines);
 		//anim update 
 		var update = function() {
 			TWEEN.update();		

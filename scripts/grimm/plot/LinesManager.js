@@ -4,30 +4,31 @@ define([],function(){
 
 	TalkLine = {hash:[]};
 	
-	TalkLine.resolveCoolDown = function(obj)
-	{
-		if(TalkLine.hash.indexOf(obj) == -1)
+	TalkLine.resolveCoolDown = function(type,meta)
+	{	
+		var obj = new type(meta);
+
+		if(TalkLine.hash[type] == null)
 		{
 			//if no parent, no cooldown and talk instantly
 			if(obj.parent != null)
 			{
-				obj.cooldown = 0;
-				TalkLine.hash.push(obj);
+				console.log("in");
+				TalkLine.hash[type] = 0;
 			}
 			else
 			{
 				return obj.content;
 			}			
 		}
-	
-		obj = TalkLine.hash[TalkLine.hash.indexOf(obj)];
-		if(obj.cooldown == 0)
+
+		if(TalkLine.hash[type] == 0)
 		{	
-			obj.cooldown +=obj.rarity;
+			TalkLine.hash[type] +=obj.rarity;
 			return obj.content;
 		}else
 		{
-			return TalkLine.resolveCoolDown(obj.parent);
+			return TalkLine.resolveCoolDown(obj.parent, meta);
 		}
 
 	}

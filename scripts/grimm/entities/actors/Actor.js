@@ -18,8 +18,9 @@ define(["grimm/entities/Entity"],function(Entity){
 
 	Actor.prototype.talkTo = function(to,line)
 	{
-		var l = new this.lines[line](to);
-		return TalkLine.resolveCoolDown(l);
+		var type = this.lines[line];
+		
+		return TalkLine.resolveCoolDown(type,{to : to});
 	}
 
 	Actor.prototype.say = function(line)
