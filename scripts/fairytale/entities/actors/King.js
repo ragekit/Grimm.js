@@ -1,7 +1,7 @@
 define(["grimm/entities/actors/Actor",
 	"fairytale/entities/lines/Greeting"],
 	function(Actor,Greeting){
-
+		
 	King.prototype = new Actor();
 	King.prototype.constructor = King;
 	King.prototype.parent = Actor.prototype;
