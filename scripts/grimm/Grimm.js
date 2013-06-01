@@ -11,6 +11,8 @@ define(["grimm/TweenPool",
 	LinesManager)
 {
 
+
+
 	function Grimm(promptId, storyOutputId)
 	{
 		this.actors = [];
@@ -20,6 +22,8 @@ define(["grimm/TweenPool",
 		this.inputProcessor = new InputProcessor(document.getElementById("input"),this.update.bind(this));
 		this.narrator = new Narrator(this, this.inputProcessor, this.pool);
 
+		//static access;
+		Grimm.instance = this;
 	}
 
 	Grimm.prototype.update = function()
@@ -29,6 +33,19 @@ define(["grimm/TweenPool",
 		{
 			this.actors[i].update();
 		}
+
+		for (var i = 0; i < this.actors.length; i++) {
+			for (var j = 0; j < this.actors.length; j++) {
+				if(this.actors[i] != this.actors[j])
+				{
+					if(!this.actors[i].knows(this.actors[j]))
+					{
+						this.actors[i].talk("greeting",{to : this.actors[j].name});
+					}
+				}	
+			};
+			
+		};
 
 		console.log("UPDATE LOOP");
 	}

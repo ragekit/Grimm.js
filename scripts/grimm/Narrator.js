@@ -15,7 +15,7 @@ define(["grimm/InlineTextElement",
 		this.output = outputPool;
 		this.input = inputProcessor;
 
-		//TOSEPARATE : is implemented in each story right ? or not. dunno
+		//TODO SEPARATE : is implemented in each story right ? or not. dunno
 		this.commands = [
 			{
 				trigger : "look",
@@ -51,8 +51,7 @@ define(["grimm/InlineTextElement",
 						this.say("The Hero can't find this person in the room");
 						return
 					}
-					var output = target.talkTo('Hero',"greeting");
-					this.say([target.name,"says",output]);
+					target.talk("greeting",{to:"hero"});
 				}
 			},
 			{

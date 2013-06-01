@@ -10,7 +10,5 @@ define(["grimm/entities/Entity"],function(Entity){
 		Entity.call(this,"room","a basic room");
 	}
 
-	
-
 	return Room;
 })

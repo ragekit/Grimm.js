@@ -13,7 +13,6 @@ define([],function(){
 			//if no parent, no cooldown and talk instantly
 			if(obj.parent != null)
 			{
-				console.log("in");
 				TalkLine.hash[type] = 0;
 			}
 			else
